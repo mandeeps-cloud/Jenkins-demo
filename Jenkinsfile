@@ -1,8 +1,7 @@
 def image
 
 pipeline {
-    agent {
-        label 'docker'
+    agent any
     stages {
         stage('Build') {
             steps {
