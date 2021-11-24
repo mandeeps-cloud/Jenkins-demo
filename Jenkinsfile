@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    image = docker.build("mcr.microsoft.com/dotnet/core/aspnet:3.1.1")
+                    image = docker.build("Dockerfile")
                 }
             }
         }
