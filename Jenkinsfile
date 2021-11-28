@@ -12,14 +12,14 @@ pipeline {
         }
     }
 }
-    stage('Smoke Test') {
-       steps {
-            script {
-                container = image.run()
-                container.stop()
-          }
-        }
-    }
+//     stage('Smoke Test') {
+//        steps {
+//             script {
+//                 container = image.run()
+//                 container.stop()
+//           }
+//         }
+//     }
     stage('Push image') {
         steps {
             script {
