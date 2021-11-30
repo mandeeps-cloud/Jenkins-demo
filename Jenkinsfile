@@ -29,5 +29,5 @@ pipeline {
                     returnStdout: true
                 ).trim()
               echo "Pushing image To GCR"
-              sh "docker push eu.gcr.io/${google_projectname}/${image_name}:${image-tag}"
+              sh "docker push eu.gcr.io/${gcp-r-d}/${image_name}:${image-tag}"
           }
