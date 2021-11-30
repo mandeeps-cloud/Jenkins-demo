@@ -11,15 +11,18 @@ pipeline {
     }
 }
 
-stage ('push') {
-    steps {
-        script {
-            withDockerRegistry([credentialsId: "dockerhub", url: "https://registry.hub.docker.com" ]) {
-                image.push()
-            }
+    stage('Push image') {
+        steps {
+            script {
+                withDockerRegistry([credentialsId: "kubernetes" , url: "https://eu.gcr.io"]) {
+                    
+                def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customimage.push()
+                }
+            } 
+
         }
     }
-}
 
 
 
