@@ -11,14 +11,14 @@ pipeline {
     }
 }
 
-//     stage('Smoke Test') {
-//        steps {
-//             script {
-//                 container = image.run()
-//                 container.stop()
-//           }
-//         }
-//     }
+    stage('Smoke Test') {
+       steps {
+            script {
+                container = image.run()
+                container.stop()
+          }
+        }
+    }
 
             withCredentials([file(credentialsId: 'kubernetes', variable: 'GC_KEY')]){
               sh "cat '$GC_KEY' | docker login -u _json_key --password-stdin https://eu.gcr.io"
@@ -30,4 +30,16 @@ pipeline {
                 ).trim()
               echo "Pushing image To GCR"
               sh "docker push eu.gcr.io/${gcp-r-d}/${image_name}:${image-tag}"
+                 post { 
+        always {
+            script {
+                if (getContext(hudson.FilePath)) {
+                    deleteDir()
+                }
+            }
+        }
+    }
           }
+
+
+
