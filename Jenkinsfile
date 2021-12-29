@@ -1,4 +1,7 @@
 pipeline {
+     options {
+    ansiColor('xterm')
+  }
     agent any
     stages {
         stage('Build') {
@@ -11,18 +14,18 @@ pipeline {
     }
 }
 
-    stage('Push image') {
-        steps {
-            script {
-                withDockerRegistry([credentialsId: "kubernetes" , url: "https://eu.gcr.io"]) {
+//     stage('Push image') {
+//         steps {
+//             script {
+//                 withDockerRegistry([credentialsId: "kubernetes" , url: "https://eu.gcr.io"]) {
                     
-                def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    customimage.push()
-                }
-            } 
+//                 def customImage = docker.build("my-image:${env.BUILD_ID}")
+//                     customimage.push()
+//                 }
+//             } 
 
-        }
-    }
+//         }
+//     }
 
 
 
