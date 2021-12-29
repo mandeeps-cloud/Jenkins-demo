@@ -14,14 +14,6 @@ pipeline {
         }
     }
 }
-    stage('Smoke Test') {
-        steps {
-            script {
-                container = image.run()
-                container.stop()
-          }
-        }
-    }
 
 // pipeline {
 //      options {
