@@ -7,14 +7,14 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    // image = docker.build("nginx:latest")
                     image = docker.build("dockerfile")
                 }
             }
         }
     }
 }
-
-       stage('Smoke Test') {
+    stage('Smoke Test') {
         steps {
             script {
                 container = image.run()
@@ -22,6 +22,31 @@ pipeline {
           }
         }
     }
+
+// pipeline {
+//      options {
+//     ansiColor('xterm')
+//   }
+//     agent any
+//     stages {
+//         stage('Build') {
+//             steps {
+//                 script {
+//                     image = docker.build("dockerfile")
+//                 }
+//             }
+//         }
+//     }
+// }
+
+//        stage('Smoke Test') {
+//         steps {
+//             script {
+//                 container = image.run()
+//                 container.stop()
+//           }
+//         }
+//     }
 //     stage('Push image') {
 //         steps {
 //             script {
