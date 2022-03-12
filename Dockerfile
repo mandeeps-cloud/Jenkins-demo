@@ -14,7 +14,7 @@ RUN mvn verify --fail-never
 # Copy the rest of the working directory contents into the container
 COPY . ./
 
-# Compile the application.
+# Compile the applications.
 RUN mvn -Dmaven.test.skip=true package
 
 # Build runtime image.
