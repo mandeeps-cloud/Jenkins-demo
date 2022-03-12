@@ -1,4 +1,4 @@
-# Use maven to compile the java application.
+# Use maven to compile the java applications.
 FROM maven:3-jdk-11-slim AS build-env
 
 # Set the working directory to /app
